@@ -22,9 +22,9 @@ stages:
 lint:
   stage: lint
   script:
-    - flake8 --jobs 4 --statistics --show-source tests myapp setup.py
-    - pylint --jobs 4 --rcfile=setup.cfg tests myapp setup.py
-    - black --skip-string-normalization --check tests myapp setup.py
+    - flake8 --jobs 4 --statistics --show-source tests myfind setup.py
+    - pylint --jobs 4 --rcfile=setup.cfg tests myfind setup.py
+    - black --skip-string-normalization --check tests myfind setup.py
 
 test:
   stage: test
