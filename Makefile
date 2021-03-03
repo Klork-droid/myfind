@@ -1,7 +1,7 @@
 TESTS = tests
 
-VENV ?= venv
-CODE = tests myapp setup.py
+VENV ?= .venv
+CODE = tests myfind setup.py
 
 .PHONY: venvpyt
 venv:

@@ -53,14 +53,17 @@ def get_good_objects(*args):
     return good_objects
 
 
-def main(*args):
+def main(*args, test=False):
     """
     Вывод на экран объектов удовлетворяющих аргументам
     :param args:
-    Получение аргументов из тестов
-    :return:
-    Возвращает полученные объекты для сравнений в тестах
+    Аргументы для теста
+    :param test:
+    Проводится ли тест
     """
-    for obj in get_good_objects(*args):
+    good_objects = get_good_objects(*args)
+    for obj in good_objects:
         print(obj)
-    return get_good_objects(*args)
+    if test:
+        return good_objects
+    return None

@@ -9,7 +9,7 @@ class ObjectType:
         self.type = self.init_type()
 
     def init_type(self):
-        path_type = "dir" if self.path.is_dir() else "file"
+        path_type = "d" if self.path.is_dir() else "f"
         return path_type
 
     def object_equal_type(self, object_type):
