@@ -1,9 +1,9 @@
 TESTS = tests
 
-VENV ?= .venv
+VENV ?= venv
 CODE = tests myapp setup.py
 
-.PHONY: venv
+.PHONY: venvpyt
 venv:
 	python3 -m venv $(VENV)
 	$(VENV)/bin/python -m pip install --upgrade pip
