@@ -1,3 +1,12 @@
+from enum import Enum
+
+
+class PathType(Enum):
+    DIR = 'd'
+    FOLDER = 'F'
+    ALL = '*'
+
+
 class ObjectType:
     """
     Вычисление переданному пути типа объекта
@@ -9,10 +18,10 @@ class ObjectType:
         self.type = self.init_type()
 
     def init_type(self):
-        path_type = "d" if self.path.is_dir() else "f"
+        path_type = PathType.DIR.value if self.path.is_dir() else PathType.FOLDER.value
         return path_type
 
     def object_equal_type(self, object_type):
-        if object_type in ("*", self.type):
+        if object_type in (PathType.ALL.value, self.type):
             return self.path
         return None

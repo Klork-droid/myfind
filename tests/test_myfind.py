@@ -6,6 +6,7 @@ from myfind.app import ObjectType
 from myfind.app import get_args
 from myfind.app import get_good_objects
 from myfind.app import main
+from myfind.models import PathType
 
 CONTENT = "content"
 
@@ -16,8 +17,8 @@ class Args:
     """
 
     path = Path("Нужно присвоить tmp_path в функции")
-    name = "*"
-    type = "*"
+    name = PathType.ALL.value
+    type = PathType.ALL.value
 
 
 def test_get_args(tmp_path):
@@ -105,9 +106,9 @@ def test_default_args(tmp_path, dirs, files):
     create_file(tmp_path, dirs, files)
     create_path_to_file(tmp_path, dirs, files)
     args = get_args([str(tmp_path)])
-    assert args.name == "*"
+    assert args.name == '*'
     assert args.path == str(tmp_path)
-    assert args.type == "*"
+    assert args.type == PathType.ALL.value
 
 
 def test_object_type1(tmp_path):
@@ -115,7 +116,7 @@ def test_object_type1(tmp_path):
     Сравнение пути до папки с типом "all"
     """
     mydir = ObjectType(tmp_path)
-    new_path = mydir.object_equal_type("*")
+    new_path = mydir.object_equal_type(PathType.ALL.value)
     assert new_path == tmp_path
 
 
@@ -133,7 +134,7 @@ def test_object_type_d(tmp_path):
     Сравнение пути до папки с типом "папка"
     """
     mydir = ObjectType(tmp_path)
-    new_path = mydir.object_equal_type("d")
+    new_path = mydir.object_equal_type(PathType.DIR.value)
     assert new_path == tmp_path
 
 
